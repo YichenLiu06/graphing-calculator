@@ -142,8 +142,7 @@ public class GraphingCalculator extends JPanel {
 	}
 	
 	@Override
-	protected void paintComponent(Graphics g) {
-		System.out.println("hello");
+	protected void paintComponent(Graphics g) {;
 		List<List<Double>> points = new ArrayList<>(X_RESOLUTION);
 		super.paintComponent(g);
 		//draw y-axis
@@ -155,8 +154,6 @@ public class GraphingCalculator extends JPanel {
 			Map<Character, String> variables = new Hashtable<>();
 			variables.put('x', String.valueOf(x));
 			double y = Double.parseDouble(evaluate(expression, variables));
-			System.out.println(x);
-			System.out.println(y);
 			points.add(Arrays.asList(x,y));
 		}
 		for(int i=0; i<X_RESOLUTION-1; i++) {
@@ -171,9 +168,8 @@ public class GraphingCalculator extends JPanel {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		/*
 		Scanner input = new Scanner(System.in);
-		System.out.println("Enter the expression to evaluate:");
+		System.out.println("Enter the expression to evaluate Ex. (9-x^2)^(1/2):");
 		String expression = input.nextLine();
 		System.out.println("Enter the value of any variables in the form Ex. x 5 (press Q to finish input):");
 		Map<Character, String> variables = new Hashtable<>();
@@ -185,12 +181,10 @@ public class GraphingCalculator extends JPanel {
 				variables.put(variable.charAt(0), variable.substring(2, variable.length()));
 		}	
 		System.out.println(evaluate(expression , variables));
-		*/
-		System.out.println("hello");
 		JFrame frame = new JFrame("Graph");
 		frame.setPreferredSize(new Dimension(1000, 1000));
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    frame.getContentPane().add(new GraphingCalculator("(9-x^2)^(1/2)", 10, 10), BorderLayout.CENTER);
+	    frame.getContentPane().add(new GraphingCalculator(expression, 10, 10), BorderLayout.CENTER);
 	    frame.setSize( X_RESOLUTION + X_OFFSET, Y_RESOLUTION + Y_OFFSET);
 	    frame.setVisible(true);
 	}
